@@ -11,7 +11,7 @@ pipeline{
      stages{
          stage('Checkout') {
          agent{
-     label 'javaprojectmanager'
+     label 'imageidentificationfront'
      }
           steps{ 
           git branch: 'main', url: 'https://github.com/sumit871996/HPE_BOLD_BI.git'
@@ -20,7 +20,7 @@ pipeline{
       
           stage('Docker build'){
           agent{
-     label 'javaprojectmanager'
+     label 'imageidentificationfront'
      }
           steps{
                sh "docker image prune -af"
@@ -32,7 +32,7 @@ pipeline{
           
           stage('Push to harbor & docker'){
           agent{
-        label 'javaprojectmanager'
+        label 'imageidentificationfront'
     }
             steps{
                 sh 'echo $HARBOR_CREDENTIALS_PSW | docker login 20.21.104.152 -u $HARBOR_CREDENTIALS_USR --password-stdin'  
@@ -44,7 +44,7 @@ pipeline{
 
         stage('Run Container'){
           agent{
-        label 'javaprojectmanager'
+        label 'imageidentificationfront'
     }
             steps{
                 script {
