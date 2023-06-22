@@ -29,13 +29,14 @@ const NavBar = () => {
       fill='horizontal'
       pad={{ horizontal: 'medium', vertical: 'small' }}
       style={{
-        borderBottom: '1px solid gray',
+        borderBottom: '0.1px solid',
+        borderColor: 'gray',
       }}
     >
-      <Box direction='row' gap='medium' align='center' flex>
-        <Box direction='row' gap='small' align='center' margin='auto'>
+      <Box direction='row' align='center' flex>
+        <Box direction='row' align='center' margin='auto'>
           <Hpe size='medium' color='plain' />
-          <Box>
+          <Box pad={{ left: '2px' }}>
             <Text color='text-strong' size='medium' weight='bold'>
               HPE Bold BI
             </Text>

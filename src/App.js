@@ -3,14 +3,17 @@ import React from 'react';
 import { Grommet } from 'grommet';
 import { hpe } from 'grommet-theme-hpe';
 import './App.css';
+import Footer from './Components/Footer';
+import NavBar from './Components/NavBar';
 import { BrowserRouter } from 'react-router-dom';
-import Loginnew from './Components/Pages/Loginnew';
+import Loginnew from './Pages/Loginnew';
+import AppRoutes from './Routes/AppRoutes';
 function App() {
   return (
-    <Grommet className='App' themeMode='light' theme={hpe} full>
-      <BrowserRouter>
-        <Loginnew />
-      </BrowserRouter>
+    <Grommet theme={hpe} full>
+      <NavBar />
+      <AppRoutes />
+      <Footer />
     </Grommet>
   );
 }
