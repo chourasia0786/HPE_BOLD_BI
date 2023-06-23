@@ -15,13 +15,39 @@ const StyledTextInput = styled(TextInput).attrs(() => ({
 
 export const SearchBox = ({ ...props }) => {
   const [value, setValue] = React.useState();
+  const searchSuggestions = props.suggestions;
+  // const [suggestions, setSuggestions] = React.useState(
+  //   searchSuggestions.slice(0, 5)
+  // );
+  const filterResults = (query) => {
+    let resultSet;
+    if (query) {
+      const regexp = new RegExp(query, 'i');
+      resultSet = searchSuggestions.filter((option) => regexp.test(option));
+    } else {
+      resultSet = searchSuggestions;
+    }
+    return resultSet.slice();
+  };
+
+  const onChange = (event) => {
+    // console.log(props.suggestions);
+    const {
+      target: { value: nextValue },
+    } = event;
+    const nextSuggestions = filterResults(nextValue);
+
+    setValue(nextValue);
+    props.setSuggestions(nextSuggestions);
+  };
 
   return (
     <StyledTextInput
       icon={<SearchIcon id='search-icon' style={{ justifyItems: 'start' }} />}
       placeholder='Search'
       value={value}
-      onChange={(event) => setValue(event.target.value)}
+      // suggestions={props.suggestions}
+      onChange={onChange}
       type='search'
       // {...props}
     />

@@ -1,18 +1,19 @@
-import { Box, ResponsiveContext } from 'grommet';
-import { Text } from 'grommet';
+import { Box, ResponsiveContext, Button, Text } from 'grommet';
 import LeftSideBarElement from './LeftSideBarElement';
-import { useContext } from 'react';
+import { useContext, useState, React } from 'react';
 import { dept } from '../Config/values';
 import { SearchBox } from './Searchbox';
-import { Button } from 'grommet';
 const LeftSideBar = (props) => {
   const size = useContext(ResponsiveContext);
+  const searchSuggestions = dept;
+  const [suggestions, setSuggestions] = useState(searchSuggestions);
   return (
     <Box
       align='center'
       round='none'
       width={!['xsmall', 'small', 'medium'].includes(size) ? '20vw' : '200px'}
       border='right'
+      height='100%'
     >
       <Box
         pad={{ top: '6%' }}
@@ -56,10 +57,47 @@ const LeftSideBar = (props) => {
         )}
       </Box>
       <Box pad={{ top: '6%', bottom: '6%' }} width='90%'>
-        <SearchBox></SearchBox>
+        <SearchBox
+          suggestions={dept}
+          setSuggestions={setSuggestions}
+        ></SearchBox>
       </Box>
-      {dept.map((element) => {
-        return <LeftSideBarElement dept={element} />;
+      {suggestions.map((element) => {
+        // console.log(suggestions);
+        return (
+          <>
+            {element == props.selected ? (
+              <Button
+                fill='horizontal'
+                onClick={() => {
+                  {
+                    props.collapsible && props.onExit(false);
+                  }
+                }}
+              >
+                <LeftSideBarElement
+                  dept={element}
+                  selected={true}
+                  setSelected={props.setSelected}
+                />
+              </Button>
+            ) : (
+              <Button
+                fill='horizontal'
+                onClick={() => {
+                  props.collapsible && props.onExit(false);
+                }}
+              >
+                <LeftSideBarElement
+                  dept={element}
+                  selected={false}
+                  setSelected={props.setSelected}
+                />
+              </Button>
+            )}
+          </>
+          // <LeftSideBarElement dept={element} selected={false} />
+        );
       })}
     </Box>
   );

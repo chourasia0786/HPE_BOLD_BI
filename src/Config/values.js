@@ -5,7 +5,7 @@ const dept = [
   'Energy',
   'Finance',
   'Government',
-  'Health care',
+  'Healthcare',
   'Hospitality',
   'HR',
   'Information Technology',

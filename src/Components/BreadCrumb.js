@@ -49,14 +49,30 @@ const BreadCrumb = (props) => {
           position='top-left'
           onEsc={() => setShow(false)}
           onClickOutside={() => setShow(false)}
+          setSelected={props.setSelected}
         >
           <Box height='100vw'>
-            <LeftSideBar collapsible={true} onExit={onExit} />
+            <LeftSideBar
+              selected={props.selected}
+              setSelected={props.setSelected}
+              collapsible={true}
+              onExit={onExit}
+            />
           </Box>
         </Layer>
       )}
-      <NavigationButton style={{ height: '1000px' }} name='Solution' />
-      <NavigationButton name='Agile' last='true' />
+      <NavigationButton
+        selected={props.selected}
+        setSelected={props.setSelected}
+        style={{ height: '1000px' }}
+        name='Solution'
+      />
+      <NavigationButton
+        selected={props.selected}
+        setSelected={props.setSelected}
+        name={props.selected}
+        last='true'
+      />
     </Box>
   );
 };

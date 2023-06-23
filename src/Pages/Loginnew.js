@@ -35,14 +35,14 @@ const Loginnew = () => {
       // set login state to local storage
       sessionStorage.setItem('user', username); // store the user in seesion storage.
       // navigate to another page
-      navigate('/Mainpage');
+      navigate('/dashboard/Solution/Agile');
     } else {
       setErrorMessage('Invalid username or password');
     }
   };
   return (
     <Box>
-      <Box direction='row'>
+      <Box direction='row' height='80vh'>
         <Box
           align='center'
           border={{ color: 'background', size: 'full' }}
