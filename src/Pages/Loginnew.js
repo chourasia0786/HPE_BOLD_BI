@@ -14,6 +14,7 @@ import {
 import NavBar from '../Components/NavBar';
 import Footer from '../Components/Footer';
 import LeftNavBar from '../Components/LeftSideBar';
+import { dept } from '../Config/values';
 
 const Loginnew = () => {
   const [formValues, setFormValues] = React.useState({
@@ -35,7 +36,7 @@ const Loginnew = () => {
       // set login state to local storage
       sessionStorage.setItem('user', username); // store the user in seesion storage.
       // navigate to another page
-      navigate('/dashboard/Solution/Agile');
+      navigate(`/dashboard/Solution/${dept[0]}`);
     } else {
       setErrorMessage('Invalid username or password');
     }

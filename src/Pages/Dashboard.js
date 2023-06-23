@@ -1,5 +1,5 @@
-import { Box } from 'grommet';
-import { useEffect, useState } from 'react';
+import { Box, ResponsiveContext } from 'grommet';
+import { useContext, useEffect, useState } from 'react';
 import LeftSideBar from '../Components/LeftSideBar';
 import BreadCrums from '../Components/BreadCrumb';
 import { Button, Layer } from 'grommet';
@@ -7,12 +7,13 @@ import { getURL } from '../Utils/commonUtils';
 import { Expand, Contract } from 'grommet-icons';
 import { useLocation } from 'react-router-dom';
 import DashboardWindowAgile from '../Components/DashboardWindows/DashboardWindowAgile';
+import { dept } from '../Config/values';
 
 const Dashboard = () => {
   const location = useLocation();
   const [name, setName] = useState(location.state);
 
-  const [selected, setSelected] = useState('Agile');
+  const [selected, setSelected] = useState(dept[0]);
   const [show, setShow] = useState();
   const [expandStatus, setExpandStatus] = useState(false);
   const path = getURL();
@@ -26,18 +27,22 @@ const Dashboard = () => {
     // console.log(name);
     // setSelected(name);
   });
-
+  const size = useContext(ResponsiveContext);
   const onExit = (status) => {
     setShow(status);
   };
   return (
     <Box direction='row'>
       {show && (
-        <Box>
+        <Box
+          width={
+            !['xsmall', 'small', 'medium'].includes(size) ? '20vw' : '200px'
+          }
+        >
           <LeftSideBar selected={selected} setSelected={setSelected} />
         </Box>
       )}
-      <Box fill='horizontal'>
+      <Box flex>
         <BreadCrums
           selected={selected}
           setSelected={setSelected}

@@ -2,15 +2,15 @@ import React from 'react';
 import { Box, Button, ResponsiveContext } from 'grommet';
 import { Previous, Next } from 'grommet-icons';
 import { useNavigate } from 'react-router-dom';
+import { dept } from '../Config/values';
 
 export const NavigationButton = (props) => {
   const size = React.useContext(ResponsiveContext);
-  const defaultname = 'Agile';
   const Navigate = useNavigate();
 
   const navigateFunction = () => {
-    props.setSelected('Agile');
-    Navigate('/dashboard/Solution/Agile');
+    props.setSelected(dept[0]);
+    Navigate(`/dashboard/Solution/${dept[0]}`);
   };
   return (
     <Box
