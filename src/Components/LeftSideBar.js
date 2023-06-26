@@ -22,7 +22,7 @@ const LeftSideBar = (props) => {
       border='right'
       height='100%'
     >
-      <Box pad={{ horizontal: '6%', vertical: '6%' }}>
+      <Box width='100%' pad={{ horizontal: '6%', vertical: '6%' }}>
         <Box
           fill='horizontal'
           // margin={{
@@ -67,7 +67,7 @@ const LeftSideBar = (props) => {
             ></Button>
           )}
         </Box>
-        <Box width='100%' height='30px' pad={{ top: '10px', bottom: '30px' }}>
+        <Box height='30px' pad={{ top: '10px', bottom: '30px' }}>
           <SearchBox
             suggestions={dept}
             setSuggestions={setSuggestions}

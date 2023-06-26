@@ -1,42 +1,33 @@
 import { Box, Card, Text, TextArea, Grid, Button } from 'grommet';
+import CardBarChart from '../../Components/Cards/CardBarChart';
+import CardDoughNutChart from '../Cards/CardDoughNutChart';
 
 const DashboardWindowAgile = () => {
   const cardElements = [
     {
+      amount: '$22,013',
       title: 'Monthly Charges Summary',
       category: 'GreenLake Billing',
     },
     {
+      amount: '$22,013',
       title: 'All Tracked Cost',
       category: 'Consumption Analytics',
     },
     {
+      amount: '$22,013',
       title: 'Capacity Planning Summary',
       category: 'GreenLake Capacity Planning',
     },
     {
+      amount: '$22,013',
       title: 'Monthly Charges Summary',
       category: 'GreenLake Billing',
     },
     {
+      amount: '$22,013',
       title: 'All Tracked Cost',
       category: 'Consumption Analytics',
-    },
-    {
-      title: 'Capacity Planning Summary',
-      category: 'GreenLake Capacity Planning',
-    },
-    {
-      title: 'Monthly Charges Summary',
-      category: 'GreenLake Billing',
-    },
-    {
-      title: 'All Tracked Cost',
-      category: 'Consumption Analytics',
-    },
-    {
-      title: 'Capacity Planning Summary',
-      category: 'GreenLake Capacity Planning',
     },
   ];
   return (
@@ -46,79 +37,14 @@ const DashboardWindowAgile = () => {
       </Text>
       <Grid pad='4%' columns='small' rows='auto' gap='large' fill='horizontal'>
         {cardElements.map((el) => {
-          return (
-            <Card
-              height='360px'
-              title='Edit Details'
-              background='light'
-              footer={<Button label='Update' secondary />}
-            >
-              <Box
-                height='100%'
-                direction='column'
-                pad={{ horizontal: 'small', vertical: 'small' }}
-                // align='center'
-                justify='between'
-              >
-                <Box
-                  style={{ backgroundColor: 'red' }}
-                  flex
-                  align='start'
-                  justify='center'
-                >
-                  Graph
-                </Box>
-                <Box height='20%' align='start' justify='end'>
-                  <Text flex color='black' weight='bold' size='small'>
-                    {el.title}
-                  </Text>
-                  <Text height='20%' weight='bold' size='xsmall'>
-                    {el.category}
-                  </Text>
-                </Box>
-              </Box>
-            </Card>
-          );
+          return <CardBarChart el={el}></CardBarChart>;
         })}
       </Grid>
-      {/* </Box>
-      <Box direction='column'>
-        <Box direction='row' pad={{ top: '2%' }}>
-          <Box width='35%' pad={{ right: '2%' }}>
-            <CardDashboard />
-          </Box>
-          <Box width='35%' pad={{ right: '2%' }}>
-            <CardDashboard />
-          </Box>
-          <Box width='35%' pad={{ right: '2%' }}>
-            <CardDashboard />
-          </Box>
-          <Card />
-        </Box>
-        <Box direction='row' pad={{ top: '2%' }}>
-          <Box width='35%' pad={{ right: '2%' }}>
-            <CardDashboard />
-          </Box>
-          <Box width='35%' pad={{ right: '2%' }}>
-            <CardDashboard />
-          </Box>
-          <Box width='35%' pad={{ right: '2%' }}>
-            <CardDashboard />
-          </Box>
-          <Card />
-        </Box>
-        <Box direction='row' pad={{ top: '2%' }}>
-          <Box width='35%' pad={{ right: '2%' }}>
-            <CardDashboard />
-          </Box>
-          <Box width='35%' pad={{ right: '2%' }}>
-            <CardDashboard />
-          </Box>
-          <Box width='35%' pad={{ right: '2%' }}>
-            <CardDashboard />
-          </Box>
-          <Card />
-        </Box> */}
+      <Grid pad='4%' columns='small' rows='auto' gap='large' fill='horizontal'>
+        {cardElements.map((el) => {
+          return <CardDoughNutChart el={el}></CardDoughNutChart>;
+        })}
+      </Grid>
     </Box>
   );
 };

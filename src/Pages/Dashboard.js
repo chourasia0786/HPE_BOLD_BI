@@ -39,7 +39,11 @@ const Dashboard = () => {
             !['xsmall', 'small', 'medium'].includes(size) ? '20vw' : '200px'
           }
         >
-          <LeftSideBar selected={selected} setSelected={setSelected} />
+          <LeftSideBar
+            onExit={onExit}
+            selected={selected}
+            setSelected={setSelected}
+          />
         </Box>
       )}
       <Box flex>
