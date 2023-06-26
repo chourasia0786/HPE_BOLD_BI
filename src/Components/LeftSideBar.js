@@ -45,9 +45,6 @@ const LeftSideBar = (props) => {
             height='30px'
             justify='center'
             alignSelf='center'
-            onClick={() => {
-              navigateFunction();
-            }}
             label='Solution'
             style={{
               borderRadius: '4px',
@@ -78,37 +75,14 @@ const LeftSideBar = (props) => {
         // console.log(suggestions);
         return (
           <Box width='100%' height='40px'>
-            {element == props.selected ? (
-              <Button
-                fill='horizontal'
-                onClick={() => {
-                  {
-                    props.collapsible && props.onExit(false);
-                  }
-                }}
-              >
-                <LeftSideBarElement
-                  dept={element}
-                  selected={true}
-                  setSelected={props.setSelected}
-                />
-              </Button>
-            ) : (
-              <Button
-                fill='horizontal'
-                onClick={() => {
-                  props.collapsible && props.onExit(false);
-                }}
-              >
-                <LeftSideBarElement
-                  dept={element}
-                  selected={false}
-                  setSelected={props.setSelected}
-                />
-              </Button>
-            )}
+            <LeftSideBarElement
+              dept={element}
+              collapsible={props.collapsible}
+              onExit={props.onExit}
+              selected={element == props.selected ? true : false}
+              setSelected={props.setSelected}
+            />
           </Box>
-          // <LeftSideBarElement dept={element} selected={false} />
         );
       })}
     </Box>

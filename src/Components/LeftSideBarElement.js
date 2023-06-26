@@ -5,8 +5,9 @@ const LeftSideBarElement = (props) => {
 
   return (
     <Box
-      width='100%'
       border='bottom'
+      pad='0px'
+      height='100%'
       justify='center'
       style={{
         border: props.selected && 'bottom',
@@ -14,7 +15,9 @@ const LeftSideBarElement = (props) => {
       }}
     >
       <Button
+        pad={{ vertical: '8px' }}
         onClick={() => {
+          props.collapsible && props.onExit(false);
           props.setSelected(props.dept);
           Navigate(`/dashboard/Solution/${props.dept}`);
         }}
@@ -25,7 +28,7 @@ const LeftSideBarElement = (props) => {
           textAlign: 'start',
         }}
         label={props.dept}
-      ></Button>
+      />
     </Box>
   );
 };

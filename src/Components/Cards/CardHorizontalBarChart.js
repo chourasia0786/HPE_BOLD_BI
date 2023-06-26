@@ -1,30 +1,24 @@
 import { Box, Card, Text, Button } from 'grommet';
-import BarChart from '../../ChartData/BarChart';
 import { useState } from 'react';
-import AllTrackedCost from '../../ChartData/AllTrackedCost';
-import DoughNutChart from '../../ChartData/DoughNutChart';
-const CardDoughNutChart = (props) => {
-  const barthk = 2;
+import CapacityPlanningSummary from '../../ChartData/CapacityPlanningSummary';
+import BarChart from '../../ChartData/BarChart';
+const CardHorizontalBarChart = (props) => {
+  const barthk = 10;
   const [userData, setUserData] = useState({
-    labels: AllTrackedCost.map((data) => data.element),
+    labels: CapacityPlanningSummary.map((data) => data.month),
 
     datasets: [
       {
-        label: 'My First Dataset',
-        data: AllTrackedCost.map((data) => data.value),
+        indexAxis: 'y',
+        label: 'Gross Collection in $K',
+        data: CapacityPlanningSummary.map((data) => data.value),
         barThickness: barthk,
-        backgroundColor: [
-          '#01A982',
-          '#FFBC44',
-          '#FC5A5A',
-          '#00739D',
-          '#C54E4B',
-          '#00C8FF',
-        ],
+        backgroundColor: ['#01A982'],
+        borderRadius: barthk / 2,
+        hoverBorderRadius: barthk / 2,
         categoryPercentage: 0.5,
         borderSkipped: false,
         hoverBackgroundColor: 'green',
-        borderWidth: 0,
       },
     ],
   });
@@ -42,6 +36,20 @@ const CardDoughNutChart = (props) => {
         // align='center'
         justify='between'
       >
+        <Box direction='row' height='10%' align='start' justify='start'>
+          <Text height='20%' weight='bold' size='small'>
+            {props.el.amount}
+          </Text>
+          <Text
+            // alignSelf='end'
+            margin={{ left: '10px' }}
+            flex
+            weight='light'
+            size='xsmall'
+          >
+            Month to Date
+          </Text>
+        </Box>
         <Box
           // style={{ backgroundColor: 'lavender' }}
           flex
@@ -49,7 +57,7 @@ const CardDoughNutChart = (props) => {
           justify='center'
           height='100%'
         >
-          <DoughNutChart height='100%' chartData={userData} />
+          <BarChart chartData={userData} />
         </Box>
         <Box height='20%' align='start' justify='end'>
           <Text flex color='black' weight='bold' size='small'>
@@ -63,4 +71,4 @@ const CardDoughNutChart = (props) => {
     </Card>
   );
 };
-export default CardDoughNutChart;
+export default CardHorizontalBarChart;
