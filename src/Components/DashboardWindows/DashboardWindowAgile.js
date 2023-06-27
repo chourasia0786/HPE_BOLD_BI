@@ -1,5 +1,5 @@
 import { Box, Card, Text, TextArea, Grid, Button } from 'grommet';
-import CardBarChart from '../../Components/Cards/CardBarChart';
+import CardBarChart from '../Cards/CardBarChart';
 import CardDoughNutChart from '../Cards/CardDoughNutChart';
 import CardHorizontalBarChart from '../Cards/CardHorizontalBarChart';
 
@@ -37,15 +37,19 @@ const DashboardWindowAgile = () => {
         Bold BI products
       </Text>
       <Grid pad='4%' columns='small' rows='auto' gap='large' fill='horizontal'>
-        <CardBarChart el={cardElements[0]} />
-        <CardDoughNutChart el={cardElements[1]} />
-        <CardHorizontalBarChart el={cardElements[2]} />
-        <CardBarChart el={cardElements[0]} />
-        <CardDoughNutChart el={cardElements[1]} />
-        <CardHorizontalBarChart el={cardElements[2]} />
-        <CardBarChart el={cardElements[0]} />
-        <CardDoughNutChart el={cardElements[1]} />
-        <CardHorizontalBarChart el={cardElements[2]} />
+        <CardBarChart
+          title={cardElements[0].title}
+          selected='Agile'
+          el={cardElements[0]}
+        />
+        <CardDoughNutChart selected='Agile' el={cardElements[1]} />
+        <CardHorizontalBarChart selected='Agile' el={cardElements[2]} />
+        <CardBarChart selected='Agile' el={cardElements[0]} />
+        <CardDoughNutChart selected='Agile' el={cardElements[1]} />
+        <CardHorizontalBarChart selected='Agile' el={cardElements[2]} />
+        <CardBarChart selected='Agile' el={cardElements[0]} />
+        <CardDoughNutChart selected='Agile' el={cardElements[1]} />
+        <CardHorizontalBarChart selected='Agile' el={cardElements[2]} />
       </Grid>
     </Box>
   );

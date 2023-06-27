@@ -1,5 +1,5 @@
 import { Box, ResponsiveContext } from 'grommet';
-import { useContext, useEffect, useState } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 import LeftSideBar from '../Components/LeftSideBar';
 import BreadCrums from '../Components/BreadCrumb';
 import { Button, Layer } from 'grommet';
@@ -9,7 +9,12 @@ import { useLocation } from 'react-router-dom';
 import DashboardWindowAgile from '../Components/DashboardWindows/DashboardWindowAgile';
 import { dept } from '../Config/values';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
+  // const renderChildren = () => {
+  //   return React.cloneElement(props.children, {
+  //     selected: selected,
+  //   });
+  // };
   const location = useLocation();
   const [name, setName] = useState(location.state);
 
@@ -31,6 +36,7 @@ const Dashboard = () => {
   const onExit = (status) => {
     setShow(status);
   };
+
   return (
     <Box direction='row'>
       {show && (
@@ -54,7 +60,7 @@ const Dashboard = () => {
         />
         <Box align='start' direction='row'>
           <Box flex margin={{ left: '40px', top: '20px', bottom: '20px' }}>
-            <DashboardWindowAgile />
+            {props.children}
           </Box>
           <Button margin={{ top: 'small' }}>
             {expandStatus ? (

@@ -9,12 +9,18 @@ import {
 } from 'chart.js/auto';
 
 const DoughNutChart = ({ chartData }) => {
+  const options = {
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        align: 'start',
+      },
+    },
+  };
   return (
     <Box height='100%'>
-      <Doughnut
-        data={chartData}
-        options={{ maintainAspectRatio: false }}
-      ></Doughnut>
+      <Doughnut data={chartData} options={options}></Doughnut>
     </Box>
   );
 };
