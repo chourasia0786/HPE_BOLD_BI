@@ -31,7 +31,7 @@ const Loginnew = () => {
     event.preventDefault();
     if (
       (username === 'hpe@com' && password === 'hpe') ||
-      (username === 'hpe' && password === 'hpe')
+      (username === 'hpe@com' && password === 'hpe')
     ) {
       // set login state to local storage
       sessionStorage.setItem('user', username); // store the user in seesion storage.
