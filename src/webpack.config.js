@@ -15,6 +15,7 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   devServer: {
-    disableHostCheck: true
-  }
+    compress: true,
+    disableHostCheck: true,   // That solved it
+    } 
 };
