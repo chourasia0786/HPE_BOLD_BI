@@ -2,6 +2,8 @@ import { Box, Card, Text, Button } from 'grommet';
 import { useState } from 'react';
 import CapacityPlanningSummary from '../../ChartData/CapacityPlanningSummary';
 import BarChart from '../../ChartData/BarChart';
+import { View } from 'grommet-icons';
+import HoverButton from './HoverButton';
 const CardHorizontalBarChart = (props) => {
   const barthk = 10;
   const [userData, setUserData] = useState({
@@ -23,52 +25,57 @@ const CardHorizontalBarChart = (props) => {
     ],
   });
   return (
-    <Card
-      height='360px'
-      title='Edit Details'
-      background='light'
-      footer={<Button label='Update' secondary />}
-    >
-      <Box
-        height='100%'
-        direction='column'
-        pad={{ horizontal: 'small', vertical: 'small' }}
-        // align='center'
-        justify='between'
+    <Box height='100%' className='wrapperclass'>
+      <Card
+        height='360px'
+        title='Edit Details'
+        background='light'
+        footer={<Button label='Update' secondary />}
       >
-        <Box direction='row' height='10%' align='start' justify='start'>
-          <Text height='20%' weight='bold' size='small'>
-            {props.el.amount}
-          </Text>
-          <Text
-            // alignSelf='end'
-            margin={{ left: '10px' }}
-            flex
-            weight='light'
-            size='xsmall'
-          >
-            Month to Date
-          </Text>
-        </Box>
         <Box
-          // style={{ backgroundColor: 'lavender' }}
-          flex
-          align='start'
-          justify='center'
           height='100%'
+          direction='column'
+          pad={{ horizontal: 'small', vertical: 'small' }}
+          // align='center'
+          justify='between'
         >
-          <BarChart chartData={userData} />
+          <Box direction='row' height='10%' align='start' justify='start'>
+            <Text height='20%' weight='bold' size='small'>
+              {props.el.amount}
+            </Text>
+            <Text
+              // alignSelf='end'
+              margin={{ left: '10px' }}
+              flex
+              weight='light'
+              size='xsmall'
+            >
+              Month to Date
+            </Text>
+          </Box>
+          <Box
+            // style={{ backgroundColor: 'lavender' }}
+            flex
+            align='start'
+            justify='center'
+            height='100%'
+          >
+            <BarChart chartData={userData} />
+          </Box>
+          <Box height='20%' align='start' justify='end'>
+            <Text flex color='black' weight='bold' size='small'>
+              {props.el.title}
+            </Text>
+            <Text height='20%' weight='bold' size='xsmall'>
+              {props.el.category}
+            </Text>
+          </Box>
         </Box>
-        <Box height='20%' align='start' justify='end'>
-          <Text flex color='black' weight='bold' size='small'>
-            {props.el.title}
-          </Text>
-          <Text height='20%' weight='bold' size='xsmall'>
-            {props.el.category}
-          </Text>
-        </Box>
+      </Card>
+      <Box className='overlayclass'>
+        <HoverButton selected={props.selected} />
       </Box>
-    </Card>
+    </Box>
   );
 };
 export default CardHorizontalBarChart;

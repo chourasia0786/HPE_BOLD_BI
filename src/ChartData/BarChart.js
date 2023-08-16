@@ -9,9 +9,22 @@ import {
 } from 'chart.js/auto';
 
 const BarChart = ({ chartData }) => {
+  const options = {
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false,
+        labels: {
+          font: {
+            size: 1,
+          },
+        },
+      },
+    },
+  };
   return (
     <Box height='100%'>
-      <Bar data={chartData} options={{ maintainAspectRatio: false }}></Bar>
+      <Bar data={chartData} options={options}></Bar>
     </Box>
   );
 };

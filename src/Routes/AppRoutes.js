@@ -19,6 +19,10 @@ const AppRoutes = () => {
         path='/dashboard/Solution/Agile'
       ></Route>
       <Route
+        element={<Dashboard></Dashboard>}
+        path='/dashboard/Solution/Agile/Monthly Charges Summary'
+      ></Route>
+      <Route
         element={<Dashboard />}
         path='/dashboard/Solution/Construction'
       ></Route>

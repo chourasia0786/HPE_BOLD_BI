@@ -1,0 +1,39 @@
+.wrapperclass {
+    position: relative;
+    }
+    
+    .cardclass {
+    display: block;
+    }
+    .contentclass {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    }
+    
+
+    .contentclass View{
+        opacity: 1;
+
+        }
+    
+    .overlayclass {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: 0.5s ease;
+    background-color: #F7F7F7;
+    }
+    
+    .wrapperclass:hover .overlayclass {
+    opacity: 0.8;
+    }
+
+    .wrapperclass:hover .contentclass {
+        opacity: 1;
+        }
